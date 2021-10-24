@@ -1,0 +1,16 @@
+<% if @cartitem.errors.present? %>
+<h3>エラーがあります</h3>
+<ul>
+  <% @cartitem.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<%= form_for @cartitem, url: {action: :create} do |f| %>
+  <p><%= f.label :name, '商品名：' %></p>
+  <p><%= f.label :price, '価格：' %></p>
+  <p><%= f.label :quantity, '数量' %>
+  <%= f.text_field :quantity %></p>
+  <%= f.submit '登録' %>
+<% end %>

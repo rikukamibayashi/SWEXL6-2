@@ -1,0 +1,26 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
+<% @carts.each do |e| %>
+  <p>
+    <% if @cart %>
+      <%= e.name %>
+       <%= (e.price).to_i %>円
+      <%= e.quantity %>
+      <%= link_to 'カートから削除する', cartitem_path(e), method: :delete %>
+      
+      <% @quantity += e.quantity %>
+    <% end %>
+  </p>
+  
+  
+<% end %>
+
+<p>
+  合計金額：<% @quantity %>円
+</p>
+
+<p>
+  <%= link_to '商品一覧ページ', products_path %>
+</p>
